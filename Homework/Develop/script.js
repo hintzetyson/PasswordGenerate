@@ -5,6 +5,10 @@ var generateBtn = document.querySelector("#generate");
 // Write password to the #password input
 function writePassword() {
 
+//Clear whatever was in here before
+  var passwordText = document.getElementById("password");
+  passwordText.value = "";
+
 
 //Get the length of the password, returns to the start if it isn't correct
   var lengthprompt=prompt("What would you like the length of your password to be? It must be between 8 and 128 characters");
@@ -25,7 +29,7 @@ function writePassword() {
   var numbersconfirm=confirm("Would you like numbers?");
 
   if (uppercaseconfirm ==false && lowercaseconfirm == false && specialcharactersconfirm == false && numbersconfirm == false) {
-    alert("You must select at least 1 parameter, program will now start over");
+    alert("You must select at least 1 parameter, program will now restart");
     writePassword();
 
   }
@@ -36,6 +40,7 @@ function writePassword() {
   var Numbers = "1234567890";
   var Specialcharacters = "!@#$%^&*()_+-':;<>={}[]\/.?~ ";
   var includedChars = "";
+  var newpassword = "";
 
   //Checking the confirm of the variables
   if(lowercaseconfirm){
@@ -55,15 +60,14 @@ function writePassword() {
   //Looping through the password length to get all characters
   for(var i=0; i < lengthprompt; i++){
       var randomNumber = Math.floor(Math.random()*includedChars.length-1);
-      password += includedChars.charAt(randomNumber);
+      newpassword += includedChars.charAt(randomNumber);
       console.log(includedChars.charAt(randomNumber));
     }
   
 
   //Putting the text on the screen
-  var passwordText = document.getElementById("password");
   
-  passwordText.value = password;
+  passwordText.value = newpassword;
 
   
   
